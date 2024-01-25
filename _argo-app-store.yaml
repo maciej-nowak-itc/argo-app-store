@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/maciej-nowak-itc/argo-app-store.git'
     #bad path by design, will be fixed with next PR
-    path: /
+    path: '/'
     targetRevision: main
   destination:
     namespace: argocd
