@@ -4,7 +4,7 @@ Model of a central repository for applications deployed through ArgoCD.
 
 The only Argo application object one needs to add to ArgoCD is the a manifest for the ArgoCD itself. It ties the ArgoCD with this very repo and master revision, thus ArgoCD would start monitoring it, and automaticaly deploying all new ArgoCD objects added to here.
 ```
-kubectl apply -f ${repo}/_argo-app-store.yaml
+kubectl apply -f https://raw.githubusercontent.com/maciej-nowak-itc/argo-app-store/main/_argo-app-store.yaml
 ```
 
 ## How to
