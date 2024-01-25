@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:maciej-nowak-itc/gitops-with-argo-udemy.git
-    path: 'argocd'
+    repoURL: git@github.com:maciej-nowak-itc/argo-app-store.git
+    path: '/'
     targetRevision: main
   destination:
     namespace: argocd
