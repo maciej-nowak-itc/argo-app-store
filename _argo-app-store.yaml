@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-app-store
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:maciej-nowak-itc/gitops-with-argo-udemy.git
+    path: 'argocd'
+    targetRevision: main
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
