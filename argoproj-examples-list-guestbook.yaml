@@ -4,7 +4,7 @@ metadata:
   name: argoproj-examples-list-guestbook
   namespace: argocd
 spec:
-  generator:
+  generators:
     list: 
       elements:
       - environment: dev
