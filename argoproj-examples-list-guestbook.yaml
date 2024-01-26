@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argoproj-examples-list-guestbook
+  namespace: argocd
+spec:
+  generator:
+    list: 
+      elements:
+      - environment: dev
+        cluster: https://kubernetes.default.svc
+        repoURL: https://github.com/argoproj/applicationset/
+        revision: HEAD
+      - environment: stg
+        cluster: https://kubernetes.default.svc
+        repoURL: https://github.com/argoproj/applicationset/
+        revision: release-0.4.0
+      - environment: prod
+        # TODO: Set up separate cluster for prod and exercise ArgoCD spann over multiple clusters
+        cluster: https://kubernetes.default.svc
+        repoURL: https://github.com/argoproj/applicationset/
+        revision: release-0.4.1
+  template:
+    metadata:
+      name: argoproj-examples-list-guestbook-{{environment}}
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: '{{repoURL}}'
+        targetRevision: {{revision}}
+        path: examples/list-generator/guestbook/engineering-{{environment}}
+      destination:
+        server: '{{cluster}}'
+        namespace: apps-sandbox
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
