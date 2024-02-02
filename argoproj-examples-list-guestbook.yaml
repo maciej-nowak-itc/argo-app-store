@@ -11,10 +11,10 @@ spec:
         cluster: 'https://kubernetes.default.svc'
         repoURL: 'https://github.com/argoproj/applicationset.git'
         revision: HEAD
-      - environment: stg
-        cluster: 'https://kubernetes.default.svc'
-        repoURL: 'https://github.com/argoproj/applicationset.git'
-        revision: release-0.4.0
+      # - environment: stg
+      #   cluster: 'https://kubernetes.default.svc'
+      #   repoURL: 'https://github.com/argoproj/applicationset.git'
+      #   revision: release-0.4.0
       - environment: prod
         # TODO: Set up separate cluster for prod and exercise ArgoCD spann over multiple clusters
         cluster: 'https://kubernetes.default.svc'
