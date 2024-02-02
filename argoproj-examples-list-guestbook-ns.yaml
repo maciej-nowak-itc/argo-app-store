@@ -1,0 +1,11 @@
+# List of namspaces that should match the guestbook AppSet
+# Position of the manifest TBD. Tentatively would expect those to be in the Deployment manifest repo.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argoproj-dev
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argoproj-prod
