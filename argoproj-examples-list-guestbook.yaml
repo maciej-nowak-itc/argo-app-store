@@ -10,16 +10,11 @@ spec:
       - environment: dev
         cluster: 'https://kubernetes.default.svc'
         repoURL: 'https://github.com/argoproj/applicationset.git'
-        revision: HEAD
-      # - environment: stg
-      #   cluster: 'https://kubernetes.default.svc'
-      #   repoURL: 'https://github.com/argoproj/applicationset.git'
-      #   revision: release-0.4.0
+        targetRevision: master
       - environment: prod
-        # TODO: Set up separate cluster for prod and exercise ArgoCD spann over multiple clusters
         cluster: 'https://kubernetes.default.svc'
         repoURL: 'https://github.com/argoproj/applicationset.git'
-        revision: release-0.4.1
+        targetRevision: v0.4.1
   template:
     metadata:
       name: 'argoproj-examples-list-guestbook-{{environment}}'
@@ -28,7 +23,7 @@ spec:
       source:
         repoURL: '{{repoURL}}'
         path: 'examples/list-generator/guestbook/engineering-{{environment}}'
-        targetRevision: '{{revision}}'
+        targetRevision: '{{targetRevision}}'
       destination:
         server: '{{cluster}}'
         namespace: apps-sandbox
